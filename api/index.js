@@ -1,10 +1,14 @@
-var express = require('express');
-var app = express();
+const express = require('express');
+const fs = require('fs');
+const app = express();
 
 app.get('/', function (req, res) {
-  res.send('Hello World!');
+    fs.readFile('./data/ingredients/ingredients.json', (err, result) => {
+        res.send(result);
+    });
 });
 
 app.listen(4200, function () {
   console.log('Example app listening on port 4200!');
 });
+
