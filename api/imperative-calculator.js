@@ -34,14 +34,16 @@ const calculateRanking = (id) => {
     // })
 
     Promise.all([getIngredients(), getIngredientDetails(), getCharacteristicRankings()])
-    .then(([ingredients, ingredientDetails, rankings]) => {
-        console.log('ingredientDetails', ingredientDetails);
+    .then(([ing, ingDetails, rankings]) => {
         let ingredientsWithDetails = [];
+        let ingredients = JSON.parse(ing);
+        let ingredientDetails = JSON.parse(ingDetails);
 
-        for(let i=0; i<=ingredients.length; i++) {
-            for(let j=0; j<=ingredientDetails.length; j++) {
+        for(let i=0; i<ingredients.length; i++) {
+            for(let j=0; j<ingredientDetails.length; j++) {
                 if (ingredients[i].id === ingredientDetails[j].id){
-                    ingredientsWithDetails.push({ ...ingredients[i], ...ingredientDetails[i] });
+                    ingredientsWithDetails.push(
+                        Object.assign({}, ingredients[i], ingredientDetails[i])); // figure out why spread isnt supported
                 }
             }
         }
