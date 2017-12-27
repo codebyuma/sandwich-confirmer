@@ -7,5 +7,12 @@ const ingredientDetails = [
         slicedToCompletion: 5,
         squareToCircle: 1,
         savoury: 10
+    },
+    { 
+        id: 32,
+        name: 'sprinkles',
+        servedCold: 8,
+        savoury: 0,
+        consistency: 10
     }
 ];
